@@ -1,19 +1,94 @@
 <html>
 
   <head>
-  
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="jquery/css/ui-lightness/jquery-ui-1.9.2.custom.min.css" />	
+	
     <script src="xbps.js"></script>
     <script src="libs/orbitcam.js"></script>
     <script src="parsers/ply.js"></script>    	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="world.js"></script>    	
     <script src="example.js"></script>   
+	    <script type="text/javascript">
+		  $(function() {
+			$("#progressbar1").css({'height': '10px' });
+			$("#progressbar1").css({'background': '#000000' });
+			$("#progressbar1").progressbar({ value: 0 });
+			
+			$("#progressbar2").css({'height': '10px' });
+			$("#progressbar2").css({'background': '#000000' });
+			$("#progressbar2").progressbar({ value: 0 });
+			
+			$("#progressbar3").css({'height': '10px' });
+			$("#progressbar3").css({'background': '#000000' });
+			$("#progressbar3").progressbar({ value: 0 });
+			
+		  $( "#testbutton" )
+				.button()
+				.click(function( event ) {
+					testbutton();
+				});
+		  });
+    </script>
   </head>
 
   <body onLoad="start();">
-    <canvas id="canvas" style="border: 1px solid black;" width="400" height="400"></canvas>
-	<div id="invertScroll">1</div>
-	<div id="mouseX-wrapper">X: <span id="mouseX"></span></div>
-	<div id="mouseY-wrapper">Y: <span id="mouseY"></span></div>
+    <table id="window">
+		<tr>
+			<td>
+				<canvas id="canvas" style="border: none" width="1200" height="800"></canvas>	
+			</td>
+			<td>
+				<div id="mouseX-wrapper">Mouse X: <span id="mouseX"></span></div>
+				<div id="mouseY-wrapper">Mouse Y: <span id="mouseY"></span></div>
+				
+				  <table border="0" width="300" cellspacing="0" cellpadding="0">
+						<tr>
+						  <td>
+							<span>PLY 1: </span>[<span class="orangeText" id="acornStatus"></span>] - <span id="acornNumPoints">0</span> 
+							<div id="progressbar1"></div>
+						  </td>
+						</tr>
+								
+						<tr>
+						  <td>
+							<span>PLY 2: </span>[<span class="orangeText" id="mickeyStatus"></span>] - <span id="mickeyNumPoints">0</span><br />
+							<div id="progressbar2"></div>
+						  </td>
+						</tr>
+
+						<tr>
+						  <td>
+							<span>PLY 3: </span>[<span class="orangeText" id="villageStatus"></span>] - <span id="eggenburgNumPoints">0</span><br />
+							<div id="progressbar3"></div>
+						  </td>
+						</tr>
+						
+						<tr>
+						  <td>
+							<br />
+							<div id="fps"></div>                
+						  </td>
+						</tr>
+					  </table>
+	
+		<div id="testbutton">Testbutton</div>
+		<div id="pixelValues">PixelValues:<br />
+		[0]: <span id="pixelValues-0"></span><br />
+		[1]: <span id="pixelValues-1"></span><br />
+		[2]: <span id="pixelValues-2"></span><br />
+		[3]: <span id="pixelValues-3"></span><br />
+		[4]: <span id="pixelValues-4"></span><br />
+		[5]: <span id="pixelValues-5"></span><br />
+		[6]: <span id="pixelValues-6"></span><br />
+		[7]: <span id="pixelValues-7"></span><br />
+		</div>
+	
+	</td><!-- end DEBUG Window -->
+	</tr>
+	</table>
   </body>
 
 </html>

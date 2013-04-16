@@ -790,7 +790,7 @@ var PointStream = (function() {
         "ps_Color":  [.....],
         "ps_Normal": [.....]
       }
-    */
+    */	
     function parseCallback(parser, attributes){
 
       var parserIndex = getParserIndex(parser);
@@ -817,10 +817,11 @@ var PointStream = (function() {
           gotVertexData = true;
           var addedVertices = [0,0,0];
           
-          for(var j = 0; j < attributes[semantic].length; j += 3){
+          for(var j = 0; j < attributes[semantic].length; j += 3){					
             addedVertices[0] += attributes[semantic][j];
             addedVertices[1] += attributes[semantic][j+1];
             addedVertices[2] += attributes[semantic][j+2];
+			alert(attributes[semantic][j]);
           }
 
           pc.addedVertices[0] += addedVertices[0];
@@ -1211,7 +1212,7 @@ var PointStream = (function() {
     this.clear = function(){
       ctx.clear(ctx.COLOR_BUFFER_BIT | ctx.DEPTH_BUFFER_BIT);
     };
-        
+	
     /**
       Renders a point cloud.
       @param {} pointCloud
@@ -1230,7 +1231,7 @@ var PointStream = (function() {
         // Get the list of semantic names.
         var semantics = Object.keys(pointCloud.attributes);
 
-        var firstSemantic = semantics[0];
+        var firstSemantic = semantics[0];		
         
         // We need at least positional data.
         if(pointCloud.attributes[firstSemantic]){
@@ -1254,20 +1255,19 @@ var PointStream = (function() {
               */
               if(pointCloud.attributes[semantics[name]][currVBO]){
                 vertexAttribPointer(currProgram, semantics[name], 3, pointCloud.attributes[semantics[name]][currVBO].VBO);
-              }
-            }
-            ctx.drawArrays(ctx.POINTS, 0, arrayOfBufferObjsV[currVBO].length/3);
-            
+              }			  
+            }		
+				
+            ctx.drawArrays(ctx.POINTS, 0, arrayOfBufferObjsV[currVBO].length/3);            
             // If we render a point cloud with vertices and colors, then 
             // another one with only vertices, this may cause issues if we
             // don't disabled all the current attributes after each draw.
             for(var name in semantics){
               disableVertexAttribPointer(currProgram, semantics[name]);
-            }
-            
-          }
+            }     
+          }		  
         }
-      }
+      }	  
     };
         
     /**
@@ -1294,7 +1294,7 @@ var PointStream = (function() {
       var contextNames = ["webgl","experimental-webgl", "moz-webgl","webkit-3d"];
       
       for(var i = 0; i < contextNames.length; i++){
-        try{
+        try{		
           ctx = canvas.getContext(contextNames[i], ctxAttribs);
           if(ctx){
             break;
@@ -1739,7 +1739,7 @@ var PointStream = (function() {
         }
       }
     };
-    
+	
     /**
       Begins downloading and parsing a point cloud object.
       

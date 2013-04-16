@@ -1,0 +1,5 @@
+body { font-size:10px; font-family:arial, sans-serif; padding:0px; margin:0px; border:none  }
+table#window tr td { vertical-align:top;  }
+table, tr, td { margin:0px; padding:0px; border:none; border-collapse:collapse } 
+body { overflow:hidden; height:1300px; width:1600px }
+body { cursor:crosshair }
